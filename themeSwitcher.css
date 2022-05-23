@@ -1,0 +1,86 @@
+body {
+  color: #222;
+  background-color: #eee;
+  font-family: sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    color: #418cec;
+    background-color: #333;
+  }
+}
+
+body[data-theme="dark"] {
+  color: #418cec;
+  background-color: #333;
+}
+
+.btn-theme {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.25rem;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: 0 solid;
+  transition: transform 0.3s ease-out;
+}
+
+.btn-theme:hover {
+  transform: scale(1.2);
+}
+
+.btn-theme:focus {
+  outline: 2px solid currentColor;
+}
+
+.btn-theme__icon {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: currentColor;
+  border-radius: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  transition: transform 0.5s ease-out;
+}
+
+/* Switch icon between dark and light */
+.btn-theme__icon > * {
+  transition: opacity 0.3s ease-out;
+}
+[data-theme="light"] .theme-dark,
+[data-theme="dark"] .theme-light {
+  opacity: 1;
+}
+[data-theme="light"] .theme-light,
+[data-theme="dark"] .theme-dark {
+  opacity: 0;
+}
+
+/* Button click animation */
+
+.btn-theme.js-clicked {
+  animation: btn-theme-clicked 0.5s ease-out forwards;
+}
+
+@keyframes btn-theme-clicked {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
